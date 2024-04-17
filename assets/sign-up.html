@@ -29,7 +29,7 @@
           <h3>Sign up with us today</h3>
           <p>Enter your email and choose a password to set up your account</p>
         </div>
-        <form action="" method="post">
+        <form action="" method="post" id="form-1">
           <div class="input name-input">
             <input
               type="text"
@@ -37,6 +37,7 @@
               class="name"
               placeholder="full name"
             />
+            <span class="form-msg"></span>
           </div>
           <div class="input email-input">
             <input
@@ -44,7 +45,7 @@
               name="email"
               class="email"
               placeholder="email address"
-            />
+            /><span class="form-msg"></span>
           </div>
           <div class="input password-input">
             <input
@@ -52,7 +53,7 @@
               name="password"
               class="password"
               placeholder="enter password"
-            />
+            /><span class="form-msg"></span>
           </div>
           <div class="input re-enter-password-input">
             <input
@@ -60,7 +61,7 @@
               name="re-password"
               class="re-password"
               placeholder="re-enter password"
-            />
+            /><span class="form-msg"></span>
           </div>
           <div class="configs">
             <div class="remember-input">
@@ -87,5 +88,20 @@
         </div>
       </div>
     </div>
+    <script src="../valid.js"></script>
+    <script>
+      validator({
+        form: "#form-1",
+        errorSelector: ".form-msg",
+        rules: [
+          validator.isRequired(".name"),
+          validator.isEmail(".email"),
+          validator.minLength(".password", 6),
+          validator.checkPass(".re-password", function () {
+            return document.querySelector("#form-1 .password").value;
+          }),
+        ],
+      });
+    </script>
   </body>
 </html>

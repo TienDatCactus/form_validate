@@ -119,6 +119,7 @@ body {
   position: absolute;
   top: 3px;
   width: 14px;
+  cursor: pointer;
 }
 
 .remember-input input[type="checkbox"] {
@@ -178,8 +179,6 @@ body {
   font-size: 18px;
 }
 
-
-
 .continue-api > .with-google > .icon {
   position: relative;
   left: 120px;
@@ -207,4 +206,21 @@ body {
   left: 120px;
   top: 4px;
   font-size: 30px;
+}
+
+.form-msg {
+  font-size: 12px;
+  color: #cccccc;
+}
+
+.invalid > input {
+  border: 1px solid rgb(185, 11, 11);
+  background-color: rgb(57, 30, 30);
+  caret-color: rgb(198, 18, 18);
+}
+
+.invalid > input:focus {
+  border: 1px solid rgb(185, 11, 11);
+  background-color: rgb(45, 24, 24);
+  outline: none;
 }
