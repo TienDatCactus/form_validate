@@ -42,9 +42,9 @@ function validator(opts) {
         // submit with js
         if (typeof opts.onSubmit === "function") {
           var formData = form.querySelectorAll("[name]");
-          var formValue = Array.from(formData);
-          formValue.reduce(function (values, input) {
-            return (values[input.name] = input.value) && values;
+          var formValue = Array.from(formData).reduce(function (values, input) {
+            values[input.name] = input.value;
+            return values;
           }, {});
           opts.onSubmit(formValue);
         } // submit with default event
