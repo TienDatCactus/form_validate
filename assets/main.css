@@ -1,0 +1,210 @@
+* {
+  font-family: "Roboto Mono", monospace;
+  color: #ffff;
+}
+body {
+  background-color: rgb(27, 26, 31);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  background-color: rgb(38, 37, 42);
+  border-radius: 20px;
+  width: 550px;
+  height: 100%;
+}
+
+.form-container {
+  padding: 20px;
+}
+.form-header {
+  text-align: center;
+}
+.form-header > .logo {
+  font-size: 50px;
+  margin: 20px 0;
+}
+.form-header > h3 {
+  font-size: 26px;
+  margin: 0;
+}
+.form-header > p {
+  font-size: 14px;
+  color: #ccc;
+  padding-bottom: 20px;
+}
+::placeholder {
+  color: #9d9d9d;
+}
+::-ms-reveal {
+  filter: invert(100%);
+}
+.input > input {
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 6px 0;
+  border: none;
+  height: 60px;
+  width: 100%;
+  background-color: rgb(30, 29, 34);
+  color: #ffff;
+  caret-color: rgb(113, 77, 201);
+}
+.input > input:focus {
+  border: 1px solid rgb(113, 77, 201);
+  background-color: rgb(43, 37, 63);
+  outline: none;
+}
+
+.configs {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+.remember-input {
+  display: flex;
+  align-items: center;
+}
+.remember-input > span {
+  color: #ccc;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.remember {
+  width: 15px;
+  height: 15px;
+  background-color: rgb(30, 29, 34);
+}
+.remember-input .remember {
+  appearance: none;
+  background-color: #dfe1e4;
+  border-radius: 72px;
+  border-style: none;
+  flex-shrink: 0;
+  height: 20px;
+  margin: 0;
+  position: relative;
+  width: 30px;
+}
+
+.forgot-input > a {
+  text-decoration: none;
+  color: rgb(101, 70, 177);
+}
+.remember-input .remember::before {
+  bottom: -6px;
+  content: "";
+  left: -6px;
+  position: absolute;
+  right: -6px;
+  top: -6px;
+  cursor: pointer;
+}
+
+.remember-input .remember,
+.remember-input .remember::after {
+  transition: all 100ms ease-out;
+}
+
+.remember-input .remember::after {
+  background-color: #fff;
+  border-radius: 50%;
+  content: "";
+  height: 14px;
+  left: 3px;
+  position: absolute;
+  top: 3px;
+  width: 14px;
+}
+
+.remember-input input[type="checkbox"] {
+  cursor: default;
+}
+
+.remember-input .remember:hover {
+  background-color: #c9cbcd;
+  transition-duration: 0s;
+}
+
+.remember-input .remember:checked {
+  background-color: rgb(101, 70, 177);
+}
+
+.remember-input .remember:checked::after {
+  background-color: #fff;
+  left: 13px;
+}
+
+.remember-input:focus:not(.focus-visible) {
+  outline: 0;
+}
+
+.remember-input .remember:checked:hover {
+  background-color: rgb(117, 82, 207);
+}
+
+.btn > input {
+  width: 100%;
+  height: 60px;
+  font-size: 20px;
+  border-radius: 12px;
+  border: none;
+  background-color: rgb(117, 82, 207);
+  cursor: pointer;
+  color: #ccc;
+}
+.btn > input:hover {
+  background-color: rgb(131, 91, 233);
+  color: #ffffff;
+}
+
+.continue-api > .with-google {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  font-size: 20px;
+  border-radius: 12px;
+  border: none;
+  background-color: rgb(30, 29, 34);
+  cursor: pointer;
+  color: #ccc;
+  margin: 20px 0;
+  font-size: 18px;
+}
+
+
+
+.continue-api > .with-google > .icon {
+  position: relative;
+  left: 120px;
+  top: 4px;
+  font-size: 30px;
+}
+
+.continue-api > .with-apple {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 60px;
+  font-size: 20px;
+  border-radius: 12px;
+  border: none;
+  background-color: rgb(30, 29, 34);
+  cursor: pointer;
+  color: #ccc;
+  margin: 20px 0;
+  align-items: center;
+  font-size: 18px;
+}
+.continue-api > .with-apple > .icon {
+  position: relative;
+  left: 120px;
+  top: 4px;
+  font-size: 30px;
+}
