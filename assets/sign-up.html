@@ -95,12 +95,17 @@
         errorSelector: ".form-msg",
         rules: [
           validator.isRequired(".name"),
+          validator.isRequired(".email"),
           validator.isEmail(".email"),
           validator.minLength(".password", 6),
+          validator.isRequired(".password"),
           validator.checkPass(".re-password", function () {
             return document.querySelector("#form-1 .password").value;
           }),
         ],
+        onSubmit: function (data) {
+          console.log(data);
+        },
       });
     </script>
   </body>
