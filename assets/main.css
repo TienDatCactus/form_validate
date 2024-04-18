@@ -266,3 +266,26 @@ body {
   border: 1px solid rgb(185, 11, 11);
   background-color: rgb(57, 30, 30);
 }
+
+
+input[type="file"] {
+  display: none;
+}
+
+.input.avatar-input{
+  margin: 25px 0 ;
+}
+.custom-file-upload {
+  padding: 20px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: none;
+  background-color: rgb(30, 29, 34);
+  cursor: pointer;
+  color: #ccc;
+}
+.custom-file-upload:hover{
+  border: 1px solid rgb(113, 77, 201);
+  color: #fff
+}
