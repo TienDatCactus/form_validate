@@ -238,7 +238,7 @@ body {
   font-weight: 700;
 }
 
-.address-input {
+.address-input > .address-select {
   border-radius: 8px;
   font-size: 16px;
   box-sizing: border-box;
@@ -252,13 +252,17 @@ body {
   caret-color: rgb(113, 77, 201);
 }
 
-.address-input>option{
+.address-input > .address-select > option {
   color: #ccc;
 }
 
-.address-input:focus{
+.address-input > .address-select:focus {
   border: 1px solid rgb(113, 77, 201);
   background-color: rgb(43, 37, 63);
   outline: none;
 }
 
+.invalid > .address-select {
+  border: 1px solid rgb(185, 11, 11);
+  background-color: rgb(57, 30, 30);
+}

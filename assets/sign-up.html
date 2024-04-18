@@ -50,9 +50,9 @@
             </div>
             <span class="form-msg"></span>
           </div>
-          <div class="input address-select">
-            <select name="address" class="address-input">
-              <option value="default" disabled selected>-- select an address --</option>
+          <div class="input address-input">
+            <select name="address" class="address-select">
+              <option value="">-- select an address --</option>
               <option value="1">Viet Nam</option>
               <option value="2">ThaiLand</option>
               <option value="3">USA</option>
@@ -118,6 +118,7 @@
         rules: [
           validator.isRequired(".name"),
           validator.isRequired("input[type=radio]"),
+          validator.isRequired("select"),
           validator.isRequired(".email"),
           validator.isEmail(".email"),
           validator.minLength(".password", 6),

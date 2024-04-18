@@ -120,6 +120,7 @@ validator.isRequired = function (selector) {
   return {
     selector: selector,
     test: function (value) {
+     
       return value ? undefined : "Please enter your information !";
     },
   };
