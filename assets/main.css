@@ -64,22 +64,22 @@ body {
   justify-content: space-between;
   margin: 20px 0;
 }
-.remember-input {
+.gay-input {
   display: flex;
   align-items: center;
 }
-.remember-input > span {
+.gay-input > span {
   color: #ccc;
   margin-left: 10px;
   font-size: 16px;
 }
 
-.remember {
+.gaycheck {
   width: 15px;
   height: 15px;
   background-color: rgb(30, 29, 34);
 }
-.remember-input .remember {
+.gay-input .gaycheck {
   appearance: none;
   background-color: #dfe1e4;
   border-radius: 72px;
@@ -95,7 +95,7 @@ body {
   text-decoration: none;
   color: rgb(101, 70, 177);
 }
-.remember-input .remember::before {
+.gay-input .gaycheck::before {
   bottom: -6px;
   content: "";
   left: -6px;
@@ -105,12 +105,12 @@ body {
   cursor: pointer;
 }
 
-.remember-input .remember,
-.remember-input .remember::after {
+.gay-input .gaycheck,
+.gay-input .gaycheck::after {
   transition: all 100ms ease-out;
 }
 
-.remember-input .remember::after {
+.gay-input .gaycheck::after {
   background-color: #fff;
   border-radius: 50%;
   content: "";
@@ -122,29 +122,29 @@ body {
   cursor: pointer;
 }
 
-.remember-input input[type="checkbox"] {
+.gay-input input[type="checkbox"] {
   cursor: default;
 }
 
-.remember-input .remember:hover {
+.gay-input .gaycheck:hover {
   background-color: #c9cbcd;
   transition-duration: 0s;
 }
 
-.remember-input .remember:checked {
+.gay-input .gaycheck:checked {
   background-color: rgb(101, 70, 177);
 }
 
-.remember-input .remember:checked::after {
+.gay-input .gaycheck:checked::after {
   background-color: #fff;
   left: 13px;
 }
 
-.remember-input:focus:not(.focus-visible) {
+.gay-input:focus:not(.focus-visible) {
   outline: 0;
 }
 
-.remember-input .remember:checked:hover {
+.gay-input .gaycheck:checked:hover {
   background-color: rgb(117, 82, 207);
 }
 
@@ -210,7 +210,7 @@ body {
 
 .form-msg {
   font-size: 12px;
-  color: #cccccc;
+  color: #c63c3c;
 }
 
 .invalid > input {
@@ -223,4 +223,17 @@ body {
   border: 1px solid rgb(185, 11, 11);
   background-color: rgb(45, 24, 24);
   outline: none;
+}
+
+.gender-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.gender-box > label {
+  color: #ccc;
+  font-size: 16px;
+  font-weight: 700;
 }

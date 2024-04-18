@@ -1,7 +1,18 @@
 function validator(opts) {
+  function getParent(element, selector) {
+    while (element.parentElement) {
+      if (element.parentElement.matches(selector)) {
+        return element.parentElement;
+      }
+      element = element.parentElement;
+    }
+  }
   var selectorRules = {};
+
   function validate(inputElement, rule) {
-    var error = inputElement.parentElement.querySelector(opts.errorSelector);
+    var error = getParent(inputElement, opts.inputSelector).querySelector(
+      opts.errorSelector
+    );
     var message;
 
     // takes out rules of selector
@@ -9,16 +20,24 @@ function validator(opts) {
     // loop through rules & check
     // if error exists , stop
     for (var i = 0; i < ruled.length; ++i) {
-      message = ruled[i](inputElement.value);
+      switch (inputElement.type) {
+        case "radio":
+        case "checkbox":
+          message = ruled[i](form.querySelector(rule.selector + ":checked"));
+          break;
+        default:
+          message = ruled[i](inputElement.value);
+      }
       if (message) break;
     }
-
-    if (message) {
-      error.innerText = message;
-      inputElement.parentElement.classList.add("invalid");
-    } else {
-      inputElement.parentElement.classList.remove("invalid");
-      error.innerText = " ";
+    if (error) {
+      if (message) {
+        error.innerText = message;
+        getParent(inputElement, opts.inputSelector).classList.add("invalid");
+      } else {
+        error.innerText = " ";
+        getParent(inputElement, opts.inputSelector).classList.remove("invalid");
+      }
     }
 
     return !message;
@@ -28,7 +47,7 @@ function validator(opts) {
     form.onsubmit = function (e) {
       e.preventDefault();
 
-      let isValid = true;
+      var isValid = true;
 
       opts.rules.forEach(function (rule) {
         var inputElement = form.querySelector(rule.selector);
@@ -43,7 +62,17 @@ function validator(opts) {
         if (typeof opts.onSubmit === "function") {
           var formData = form.querySelectorAll("[name]");
           var formValue = Array.from(formData).reduce(function (values, input) {
-            values[input.name] = input.value;
+            switch (input.type) {
+              case "checkbox":
+              case "radio":
+                console.log(input.type)
+                values[input.name] = form.querySelector(
+                  'input[type="' + input.type + '"]:checked'
+                ).value;
+                break;
+              default:
+                values[input.name] = input.value;
+            }
             return values;
           }, {});
           opts.onSubmit(formValue);
@@ -61,11 +90,9 @@ function validator(opts) {
       } else {
         selectorRules[rule.selector] = [rule.test];
       }
-      var inputElement = form.querySelector(rule.selector);
-      var message = inputElement.parentElement.querySelector(
-        opts.errorSelector
-      );
-      if (inputElement) {
+
+      var inputElements = form.querySelectorAll(rule.selector);
+      Array.from(inputElements).forEach(function (inputElement) {
         // blur out of input
         inputElement.onblur = function () {
           validate(inputElement, rule);
@@ -73,10 +100,15 @@ function validator(opts) {
 
         // while input
         inputElement.oninput = function () {
-          inputElement.parentElement.classList.remove("invalid");
-          message.innerText = "";
+          var error = getParent(inputElement, opts.inputSelector).querySelector(
+            opts.errorSelector
+          );
+          getParent(inputElement, opts.inputSelector).classList.remove(
+            "invalid"
+          );
+          error.innerText = " ";
         };
-      }
+      });
     });
   }
 }
@@ -88,7 +120,7 @@ validator.isRequired = function (selector) {
   return {
     selector: selector,
     test: function (value) {
-      return value.trim() ? undefined : "Please enter your information !";
+      return value ? undefined : "Please enter your information !";
     },
   };
 };

@@ -39,6 +39,17 @@
             />
             <span class="form-msg"></span>
           </div>
+          <div class="input gender-input">
+            <div class="gender-box">
+              <input type="radio" name="gender" value="male" />
+              <label for="male">Male</label>
+            </div>
+            <div class="gender-box">
+              <input type="radio" name="gender" value="female" />
+              <label for="male">Female</label>
+            </div>
+            <span class="form-msg"></span>
+          </div>
           <div class="input email-input">
             <input
               type="text"
@@ -64,9 +75,10 @@
             /><span class="form-msg"></span>
           </div>
           <div class="configs">
-            <div class="remember-input">
-              <input type="checkbox" name="remember" class="remember" />
-              <span>remember me</span>
+            <div class="gay-input">
+              <input type="checkbox" class="gaycheck" />
+              <span>gay ?</span>
+              <span class="form-msg"></span>
             </div>
             <div class="forgot-input">
               <a href="!" class="forgot-pw">Forgot password</a>
@@ -92,9 +104,11 @@
     <script>
       validator({
         form: "#form-1",
+        inputSelector: ".input",
         errorSelector: ".form-msg",
         rules: [
           validator.isRequired(".name"),
+          validator.isRequired("input[type=radio]"),
           validator.isRequired(".email"),
           validator.isEmail(".email"),
           validator.minLength(".password", 6),
