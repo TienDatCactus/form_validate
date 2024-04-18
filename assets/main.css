@@ -237,3 +237,28 @@ body {
   font-size: 16px;
   font-weight: 700;
 }
+
+.address-input {
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 6px 0;
+  border: none;
+  height: 60px;
+  width: 100%;
+  background-color: rgb(30, 29, 34);
+  color: #ffff;
+  caret-color: rgb(113, 77, 201);
+}
+
+.address-input>option{
+  color: #ccc;
+}
+
+.address-input:focus{
+  border: 1px solid rgb(113, 77, 201);
+  background-color: rgb(43, 37, 63);
+  outline: none;
+}
+
