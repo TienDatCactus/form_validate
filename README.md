@@ -23,11 +23,6 @@ To deploy this project run
 ```
 
 
-# Project Title
-
-Form validations for future uses
-
-
 ## Authors
 
 - [@tiendatCactus](https://github.com/TienDatCactus)
