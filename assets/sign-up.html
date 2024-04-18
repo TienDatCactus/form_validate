@@ -63,7 +63,7 @@
             <label for="file-upload" class="custom-file-upload"
               >upload your avatar</label
             >
-            <input type="file" id="file-upload" />
+            <input type="file" id="file-upload" name="avatar"/>
             <span class="form-msg"></span>
           </div>
           <div class="input email-input">
@@ -125,6 +125,7 @@
         rules: [
           validator.isRequired(".name"),
           validator.isRequired("input[type=radio]"),
+          validator.isRequired("input[type=file]"),
           validator.isRequired("select"),
           validator.isRequired(".email"),
           validator.isEmail(".email"),

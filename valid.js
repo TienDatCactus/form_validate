@@ -63,9 +63,15 @@ function validator(opts) {
           var formData = form.querySelectorAll("[name]");
           var formValue = Array.from(formData).reduce(function (values, input) {
             switch (input.type) {
+              case "file":
+                getParent(input, opts.inputSelector).querySelector(
+                  ".custom-file-upload"
+                ).innerHTML = "Your file is here !";
+                values[input.name] = input.files;
+                break;
               case "checkbox":
                 if (input.matches(":checked")) return values;
-                
+
                 if (!Array.isArray(values[input.name])) {
                   values[input.name] = [];
                 }
