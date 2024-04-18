@@ -64,8 +64,14 @@ function validator(opts) {
           var formValue = Array.from(formData).reduce(function (values, input) {
             switch (input.type) {
               case "checkbox":
+                if (input.matches(":checked")) return values;
+                
+                if (!Array.isArray(values[input.name])) {
+                  values[input.name] = [];
+                }
+                values[input.name].push();
+                break;
               case "radio":
-                console.log(input.type)
                 values[input.name] = form.querySelector(
                   'input[type="' + input.type + '"]:checked'
                 ).value;
@@ -97,6 +103,15 @@ function validator(opts) {
         inputElement.onblur = function () {
           validate(inputElement, rule);
         };
+        inputElement.onchange = function () {
+          var error = getParent(inputElement, opts.inputSelector).querySelector(
+            opts.errorSelector
+          );
+          getParent(inputElement, opts.inputSelector).classList.remove(
+            "invalid"
+          );
+          error.innerText = " ";
+        };
 
         // while input
         inputElement.oninput = function () {
@@ -120,7 +135,6 @@ validator.isRequired = function (selector) {
   return {
     selector: selector,
     test: function (value) {
-     
       return value ? undefined : "Please enter your information !";
     },
   };
